@@ -1,157 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konkani Bhajans Channel</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: white;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konkani Bhajans | Devotional Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b00; /* Saffron Devotional Tone */
+            --dark-color: #2c3e50;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
 
-    /* Header */
-    header {
-        background-color: red;
-        color: white;
-        padding: 10px 20px;
-    }
-    .header-content {
-        display: flex;
-        align-items: center;
-    }
-    header img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-right: 15px;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 1.5em;
-    }
-    header p {
-        margin: 0;
-        font-size: 0.9em;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    /* Navigation */
-    nav {
-        background-color: red;
-        display: flex;
-        justify-content: center;
-        padding: 8px 0;
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
-    }
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
-    }
-    nav a:hover {
-        text-decoration: underline;
-    }
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
 
-    /* About section */
-    .about {
-        background-color: #777;
-        border-radius: 15px;
-        margin: 15px;
-        padding: 20px;
-        text-align: center;
-        font-size: 1.1em;
-        color: white;
-    }
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    /* Stats section */
-    .stats {
-        margin: 10px;
-    }
-    .stat-box {
-        background-color: #f5f5f5;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        text-align: center;
-        font-size: 1.2em;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* Video section */
-    .bhajans {
-        background-color: #eee;
-        padding: 10px;
-    }
-    .bhajans h2 {
-        margin-left: 10px;
-        font-size: 1.2em;
-        font-weight: bold;
-    }
-    .videos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 10px;
-        justify-content: center;
-    }
-    .video-box iframe {
-        width: 300px;
-        height: 170px;
-        border: none;
-    }
+        .logo-area img {
+            height: 40px;
+            border-radius: 50%;
+        }
 
-    /* Footer */
-    footer {
-        text-align: center;
-        padding: 10px;
-        font-weight: bold;
-        color: red;
-        margin-top: 20px;
-    }
-</style>
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1545063914-a1a6ec821c88?auto=format&fit=crop&q=80&w=1000'); /* Placeholder for a temple background */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn-subscribe {
+            background-color: #ff0000; /* YouTube Red */
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 20px;
+            background: var(--white);
+            margin-top: -30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-item b {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            display: block;
+            margin: 10px auto;
+        }
+
+        .notification-card {
+            background: #fff3e0;
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--dark-color);
+            color: white;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .stats-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .nav-links { display: none; } /* Could add a hamburger menu later */
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="header-content">
-        <img src="logo.png" alt="Konkani Bhajans Logo">
-        <div>
-            <h1>Konkani Bhajans</h1>
-            <p>Evergreen Konkani Bhajans Forever</p>
+    <nav>
+        <div class="logo-area">
+            <img src="logo.png" alt="Logo">
+            <strong>Konkani Bhajans</strong>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#videos">Videos</a>
+            <a href="mailto:your-email@example.com">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>Konkani Bhajans</h1>
+        <p>Evergreen Konkani Bhajans Forever</p>
+        <a href="https://www.youtube.com/@konkanibhajans" target="_blank" class="btn-subscribe">SUBSCRIBE NOW</a>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item"><b>924</b> Subscribers</div>
+        <div class="stat-item"><b>11+</b> Videos</div>
+        <div class="stat-item"><b>Free</b> Distribution</div>
+    </div>
+
+    <div class="container">
+        <div class="notification-card">
+            <h3>📢 Announcements</h3>
+            <ul>
+                <li>Release your own copyrighted bhajans through us for <b>free</b>.</li>
+                <li>We respect artist rights. Contact us for credits or content removal.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" id="videos">Recent Uploads</h2>
+        
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <p style="color:#888">YouTube Video Embed</p>
+                </div>
+                <div class="video-info">
+                    <h4>Bhajan Title One</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Uploaded Recently</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <p style="color:#888">YouTube Video Embed</p>
+                </div>
+                <div class="video-info">
+                    <h4>Bhajan Title Two</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Uploaded Recently</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <p style="color:#888">YouTube Video Embed</p>
+                </div>
+                <div class="video-info">
+                    <h4>Bhajan Title Three</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Uploaded Recently</p>
+                </div>
+            </div>
         </div>
     </div>
-</header>
 
-<nav>
-    <a href="https://www.youtube.com/@konkanibhajans" target="_blank">Subscribe</a> |
-    <a href="#notifications">Notifications</a> |
-    <a href="#videos">Videos</a>
-</nav>
+    <footer>
+        <p>&copy; 2026 Konkani Bhajans Channel</p>
+        <p style="font-size: 0.7rem; opacity: 0.6; margin-top: 10px;">We do not claim ownership of the bhajans uploaded.</p>
+    </footer>
 
-<div class="about">
-    <p><strong>This is Konkani Bhajans</strong></p>
-    <ul style="list-style-type:none; padding:0;">
-        <li>Do subscribe</li>
-        <li>Like, share</li>
-        <li>Temple Videos</li>
-        <li>Bhajans</li>
-        <li>Devotional Songs</li>
-    </ul>
-    <p>Subscribe and Stay Tuned........</p>
-</div>
-
-<div class="stats">
-    <div class="stat-box">Subscribers: 924</div>
-    <div class="stat-box">Videos: 11</div>
-</div>
-
-<div id="notifications" class="about" style="background-color:#555;">
-    <p><strong>Notifications:</strong></p>
-    <ul style="list-style-type:none; padding:0;">
-        <li>You can release your own made (copyrighted) bhajans through us totally free. Feel free to Contact Us.</li>
+</body>
+</html>
         <li>If the bhajans uploaded on this channel are copyrighted by you, please contact us for the removal of content or for giving credits to the respective copyright holders.</li>
     </ul>
 </div>
