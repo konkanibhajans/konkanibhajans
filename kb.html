@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konkani Bhajans | Devotional Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff6b00; /* Saffron Devotional Tone */
-            --dark-color: #2c3e50;
-            --light-bg: #f9f9f9;
-            --white: #ffffff;
+            --primary-color: #ff8c00; /* Spiritual Saffron */
+            --yt-red: #ff0000;
+            --dark-bg: #1a1a1a;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #333;
         }
 
         * {
@@ -21,19 +22,322 @@
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--dark-color);
+            background-color: #f4f4f4;
+            color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
         nav {
-            background: var(--white);
-            padding: 1rem 5%;
+            background: var(--glass-bg);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-area img {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section with Varaha Image */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                        url('http://googleusercontent.com/generated_image_content/0');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-yt {
+            background-color: var(--yt-red);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-mail {
+            background-color: white;
+            color: var(--dark-bg);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-yt:hover, .btn-mail:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .stat-card h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        /* Video Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark-bg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: #888;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .stats-container { grid-template-columns: 1fr; margin-top: 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-area">
+            <img src="logo.png" alt="Konkani Bhajans">
+            <strong>Konkani Bhajans</strong>
+        </a>
+        <div class="nav-links">
+            <a href="#videos">Videos</a>
+            <a href="https://www.youtube.com/@konkanibhajans" target="_blank">YouTube</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Konkani Bhajans</h1>
+        <p>Experience the divine melody of evergreen Konkani devotional songs.</p>
+        <div class="btn-group">
+            <a href="https://www.youtube.com/@konkanibhajans" target="_blank" class="btn-yt">SUBSCRIBE ON YOUTUBE</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com" class="btn-mail">SUBMIT YOUR BHAJAN</a>
+        </div>
+    </header>
+
+    <section class="stats-container">
+        <div class="stat-card">
+            <h3>924</h3>
+            <p>Devoted Subscribers</p>
+        </div>
+        <div class="stat-card">
+            <h3>11+</h3>
+            <p>Soulful Videos</p>
+        </div>
+        <div class="stat-card">
+            <h3>FREE</h3>
+            <p>Artist Promotion</p>
+        </div>
+    </section>
+
+    <main class="content-section" id="videos">
+        <div class="section-title">
+            <h2>Recent Uploads</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Devotional Bhajan Title 1</h4>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Devotional Bhajan Title 2</h4>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Devotional Bhajan Title 3</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <strong class="footer-logo">Konkani Bhajans Channel</strong>
+        <p>Email: <a href="mailto:konkanibhajansofficial@gmail.com" class="contact-link">konkanibhajansofficial@gmail.com</a></p>
+        <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026 Krishna Pai. All Rights Reserved.</p>
+        <p style="font-size: 0.7rem; opacity: 0.6;">We respect artist rights. Contact for credits or removal requests.</p>
+    </footer>
+
+</body>
+</html>
             position: sticky;
             top: 0;
             z-index: 1000;
