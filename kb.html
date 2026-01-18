@@ -35,10 +35,13 @@
         .nav-links a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero Section */
+        /* Hero Section - Optimized for 16:9 Aspect Ratio */
         .hero {
             position: relative;
-            min-height: 80vh;
+            width: 100%;
+            height: 56.25vw; /* Perfectly maintains 16:9 ratio based on width */
+            max-height: 80vh; /* Prevents it from becoming too tall on large screens */
+            min-height: 400px; /* Ensures it looks good on mobile */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -46,16 +49,15 @@
             text-align: center;
             color: white;
             padding: 40px 20px;
-            /* Using the renamed file from your GitHub repo */
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
                         url('hero-bg.jpg'); 
             background-size: cover;
-            background-position: center 20%;
+            background-position: center;
             background-attachment: fixed;
         }
 
         .hero h1 { 
-            font-size: 3.5rem; 
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
             text-transform: uppercase; 
             margin-bottom: 10px;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
@@ -63,7 +65,7 @@
         }
 
         .hero p { 
-            font-size: 1.2rem; 
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 35px; 
             max-width: 700px;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
@@ -72,9 +74,9 @@
 
         /* Buttons */
         .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 1rem; }
+        .btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 0.9rem; }
         .btn-red { background: var(--yt-red); color: white; box-shadow: 0 4px 15px rgba(255,0,0,0.3); }
-        .btn-white { background: white; color: #1a1a1a; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-white { background: white; color: #1a1a1a; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
         /* Stats Card Section */
@@ -92,14 +94,14 @@
         }
         .stat-item { text-align: center; border-right: 1px solid #f0f0f0; }
         .stat-item:last-child { border: none; }
-        .stat-item h2 { color: var(--primary); font-size: 2.2rem; line-height: 1; margin-bottom: 5px; }
+        .stat-item h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
         .stat-item p { font-size: 0.85rem; color: #888; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 
         /* Video Gallery */
         .video-container { max-width: 1200px; margin: 0 auto 80px; padding: 0 20px; }
         .section-title { text-align: center; margin-bottom: 50px; }
         .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 15px; }
-        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
         .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .video-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; }
@@ -107,7 +109,6 @@
         .iframe-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-info { padding: 20px; }
-        .video-info h4 { font-size: 1.1rem; color: #1a1a1a; }
 
         /* Footer */
         footer { background: var(--dark); color: #888; padding: 70px 20px; text-align: center; }
@@ -115,10 +116,9 @@
         .footer-mail { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.1rem; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero { height: auto; min-height: 500px; }
             .stats { grid-template-columns: 1fr; gap: 25px; margin-top: 20px; width: 92%; padding: 30px; }
             .stat-item { border-right: none; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
-            .stat-item:last-child { border-bottom: none; }
             .nav-links { display: none; }
         }
     </style>
@@ -147,37 +147,352 @@
 
     <section class="stats">
         <div class="stat-item"><h2>924</h2><p>Subscribers</p></div>
-        <div class="stat-item"><h2>11+</h2><p>Devotional Videos</p></div>
+        <div class="stat-item"><h2>11+</h2><p>Videos</p></div>
         <div class="stat-item"><h2>FREE</h2><p>Promotion</p></div>
     </section>
 
     <main class="video-container" id="videos">
-        <div class="section-title">
-            <h2>Soulful Collection</h2>
-        </div>
+        <div class="section-title"><h2>Soulful Collection</h2></div>
         <div class="video-grid">
-            <div class="video-card">
-                <div class="iframe-wrapper">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h4>Traditional Konkani Bhajan</h4>
-                </div>
             </div>
-            <div class="video-card">
-                <div class="iframe-wrapper">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h4>Evergreen Devotional Song</h4>
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer>
         <span class="footer-logo">Konkani Bhajans</span>
-        <p>Collaborate with us:</p>
+        <a href="mailto:konkanibhajansofficial@gmail.com" class="footer-mail">konkanibhajansofficial@gmail.com</a>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Krishna Pai. Celebrating Konkani Culture.</p>
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konkani Bhajans | Devotional Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff8c00; 
+            --yt-red: #ff0000;
+            --dark: #121212;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1a1a1a; font-weight: 700; }
+        .logo-area img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+
+        .nav-links a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section - Optimized for 16:9 Aspect Ratio */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 56.25vw; /* Perfectly maintains 16:9 ratio based on width */
+            max-height: 80vh; /* Prevents it from becoming too tall on large screens */
+            min-height: 400px; /* Ensures it looks good on mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+                        url('hero-bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+            text-transform: uppercase; 
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .hero p { 
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 35px; 
+            max-width: 700px;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 0.9rem; }
+        .btn-red { background: var(--yt-red); color: white; box-shadow: 0 4px 15px rgba(255,0,0,0.3); }
+        .btn-white { background: white; color: #1a1a1a; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+        /* Stats Card Section */
+        .stats { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            max-width: 950px; 
+            margin: -60px auto 60px; 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        .stat-item { text-align: center; border-right: 1px solid #f0f0f0; }
+        .stat-item:last-child { border: none; }
+        .stat-item h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+        .stat-item p { font-size: 0.85rem; color: #888; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Video Gallery */
+        .video-container { max-width: 1200px; margin: 0 auto 80px; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .video-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .video-card:hover { transform: translateY(-10px); }
+        .iframe-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+        .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { padding: 20px; }
+
+        /* Footer */
+        footer { background: var(--dark); color: #888; padding: 70px 20px; text-align: center; }
+        .footer-logo { color: white; font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; display: block; }
+        .footer-mail { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+
+        @media (max-width: 768px) {
+            .hero { height: auto; min-height: 500px; }
+            .stats { grid-template-columns: 1fr; gap: 25px; margin-top: 20px; width: 92%; padding: 30px; }
+            .stat-item { border-right: none; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-area">
+            <img src="logo.png" alt="KB Logo">
+            <span>Konkani Bhajans</span>
+        </a>
+        <div class="nav-links">
+            <a href="#videos">Videos</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Konkani Bhajans</h1>
+        <p>Experience the divine melody of evergreen Konkani devotional songs.</p>
+        <div class="btn-group">
+            <a href="https://www.youtube.com/@konkanibhajans" target="_blank" class="btn btn-red">SUBSCRIBE ON YOUTUBE</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com" class="btn btn-white">SUBMIT YOUR BHAJAN</a>
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="stat-item"><h2>924</h2><p>Subscribers</p></div>
+        <div class="stat-item"><h2>11+</h2><p>Videos</p></div>
+        <div class="stat-item"><h2>FREE</h2><p>Promotion</p></div>
+    </section>
+
+    <main class="video-container" id="videos">
+        <div class="section-title"><h2>Soulful Collection</h2></div>
+        <div class="video-grid">
+            </div>
+    </main>
+
+    <footer>
+        <span class="footer-logo">Konkani Bhajans</span>
+        <a href="mailto:konkanibhajansofficial@gmail.com" class="footer-mail">konkanibhajansofficial@gmail.com</a>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Krishna Pai. Celebrating Konkani Culture.</p>
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konkani Bhajans | Devotional Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff8c00; 
+            --yt-red: #ff0000;
+            --dark: #121212;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1a1a1a; font-weight: 700; }
+        .logo-area img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+
+        .nav-links a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section - Optimized for 16:9 Aspect Ratio */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 56.25vw; /* Perfectly maintains 16:9 ratio based on width */
+            max-height: 80vh; /* Prevents it from becoming too tall on large screens */
+            min-height: 400px; /* Ensures it looks good on mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+                        url('hero-bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font sizing */
+            text-transform: uppercase; 
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .hero p { 
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 35px; 
+            max-width: 700px;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 0.9rem; }
+        .btn-red { background: var(--yt-red); color: white; box-shadow: 0 4px 15px rgba(255,0,0,0.3); }
+        .btn-white { background: white; color: #1a1a1a; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+        /* Stats Card Section */
+        .stats { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            max-width: 950px; 
+            margin: -60px auto 60px; 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        .stat-item { text-align: center; border-right: 1px solid #f0f0f0; }
+        .stat-item:last-child { border: none; }
+        .stat-item h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+        .stat-item p { font-size: 0.85rem; color: #888; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Video Gallery */
+        .video-container { max-width: 1200px; margin: 0 auto 80px; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .video-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .video-card:hover { transform: translateY(-10px); }
+        .iframe-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+        .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { padding: 20px; }
+
+        /* Footer */
+        footer { background: var(--dark); color: #888; padding: 70px 20px; text-align: center; }
+        .footer-logo { color: white; font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; display: block; }
+        .footer-mail { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+
+        @media (max-width: 768px) {
+            .hero { height: auto; min-height: 500px; }
+            .stats { grid-template-columns: 1fr; gap: 25px; margin-top: 20px; width: 92%; padding: 30px; }
+            .stat-item { border-right: none; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-area">
+            <img src="logo.png" alt="KB Logo">
+            <span>Konkani Bhajans</span>
+        </a>
+        <div class="nav-links">
+            <a href="#videos">Videos</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Konkani Bhajans</h1>
+        <p>Experience the divine melody of evergreen Konkani devotional songs.</p>
+        <div class="btn-group">
+            <a href="https://www.youtube.com/@konkanibhajans" target="_blank" class="btn btn-red">SUBSCRIBE ON YOUTUBE</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com" class="btn btn-white">SUBMIT YOUR BHAJAN</a>
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="stat-item"><h2>924</h2><p>Subscribers</p></div>
+        <div class="stat-item"><h2>11+</h2><p>Videos</p></div>
+        <div class="stat-item"><h2>FREE</h2><p>Promotion</p></div>
+    </section>
+
+    <main class="video-container" id="videos">
+        <div class="section-title"><h2>Soulful Collection</h2></div>
+        <div class="video-grid">
+            </div>
+    </main>
+
+    <footer>
+        <span class="footer-logo">Konkani Bhajans</span>
         <a href="mailto:konkanibhajansofficial@gmail.com" class="footer-mail">konkanibhajansofficial@gmail.com</a>
         <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Krishna Pai. Celebrating Konkani Culture.</p>
     </footer>
