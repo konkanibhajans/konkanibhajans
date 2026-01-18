@@ -3,113 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konkani Bhajans | Official Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Konkani Bhajans | Traditional Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #ff9f43;
-            --yt-red: #ff4d4d;
-            --bg-dark: #0f0f0f;
-            --card-bg: #1a1a1a;
-            --text-light: #f5f5f5;
+            --temple-gold: #d4af37;
+            --royal-red: #8b0000;
+            --deep-saffron: #ff9933;
+            --text-color: #2c3e50;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: var(--text-light); font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #fffaf0; color: var(--text-color); font-family: 'Lora', serif; line-height: 1.6; }
 
-        /* Navigation */
+        /* Traditional Header */
         nav {
-            background: rgba(15, 15, 15, 0.95);
-            padding: 1rem 5%;
+            background: #fff;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255,159,67,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--temple-gold);
         }
 
-        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-light); }
-        .logo-area img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--accent); }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; }
+        .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--royal-red); }
+        .logo-area img { height: 50px; border-radius: 50%; border: 2px solid var(--temple-gold); }
+        .logo-area h1 { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
 
-        .nav-links a { text-decoration: none; color: var(--text-light); margin-left: 20px; font-size: 0.9rem; transition: 0.3s; opacity: 0.8; }
-        .nav-links a:hover { color: var(--accent); opacity: 1; }
-
-        /* Hero Section (16:9 Ratio) */
+        /* Hero Section - 16:9 Cinematic Ratio */
         .hero {
             position: relative;
             width: 100%;
-            height: 56.25vw; /* 16:9 aspect ratio */
-            max-height: 85vh;
-            min-height: 450px;
+            height: 56.25vw; /* 16:9 Ratio */
+            max-height: 70vh;
+            min-height: 350px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(15,15,15,1)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            overflow: hidden;
+            color: white;
+            border-bottom: 5px solid var(--temple-gold);
         }
 
-        .hero-content { z-index: 2; padding: 0 20px; }
-        .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 10px; color: var(--accent); text-shadow: 0 0 30px rgba(255,159,67,0.4); }
-        .hero p { font-size: 1.1rem; max-width: 650px; margin: 0 auto 30px; opacity: 0.9; font-weight: 300; }
+        .hero h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+        .hero p { font-size: 1.2rem; font-style: italic; margin-top: 10px; }
 
-        /* Buttons */
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; font-size: 0.85rem; }
-        .btn-primary { background: var(--accent); color: #000; }
-        .btn-outline { border: 1px solid var(--text-light); color: var(--text-light); }
-        .btn:hover { transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 0 20px rgba(255,159,67,0.3); }
+        /* Call to Action Buttons */
+        .btn-box { margin-top: 30px; display: flex; gap: 20px; }
+        .btn { padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 2px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-red { background: var(--royal-red); color: white; border: 1px solid var(--royal-red); }
+        .btn-gold { border: 2px solid var(--temple-gold); color: white; }
+        .btn:hover { background: var(--deep-saffron); color: white; border-color: var(--deep-saffron); }
 
-        /* Stats Bar */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 1000px;
-            margin: -40px auto 60px;
-            background: rgba(30, 30, 30, 0.8);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            z-index: 5;
-            position: relative;
-        }
-        .stat-item h3 { color: var(--accent); font-size: 2rem; font-family: 'Cinzel', serif; }
-        .stat-item p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
-
-        /* Video Section */
-        .video-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 15px; }
-        .divider { height: 2px; width: 60px; background: var(--accent); margin: 0 auto; }
-
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
-        .video-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); }
-        .video-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        /* Traditional Card Layout */
+        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--royal-red); margin-bottom: 40px; }
         
-        .video-thumb { position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        
-        .video-info { padding: 20px; }
-        .video-info h4 { font-size: 1rem; font-weight: 400; color: #fff; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .video-card { background: white; padding: 10px; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { padding: 15px; text-align: center; border-top: 2px solid var(--temple-gold); margin-top: 10px; }
 
-        /* Contact Footer */
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 10px; }
-        .footer-email { color: var(--text-light); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
+        footer { background: #fdf5e6; padding: 60px 20px; text-align: center; border-top: 3px solid var(--temple-gold); }
+        .footer-mail { color: var(--royal-red); font-weight: bold; font-size: 1.2rem; text-decoration: none; }
 
         @media (max-width: 768px) {
-            .hero { height: 70vh; }
-            .stats { grid-template-columns: 1fr; gap: 30px; width: 90%; }
+            .hero { height: auto; padding: 80px 20px; }
             .nav-links { display: none; }
         }
     </style>
@@ -118,64 +82,42 @@
 
     <nav>
         <a href="#" class="logo-area">
-            <img src="logo.png" alt="KB">
-            <span class="logo-text">Konkani Bhajans</span>
+            <img src="logo.png" alt="Logo">
+            <h1>Konkani Bhajans</h1>
         </a>
         <div class="nav-links">
-            <a href="#videos">Library</a>
-            <a href="https://www.youtube.com/@konkanibhajans" target="_blank">YouTube</a>
-            <a href="mailto:konkanibhajansofficial@gmail.com">Contact</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com" style="text-decoration:none; color:var(--royal-red); font-weight:bold;">Contact Us</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1>Konkani Bhajans</h1>
-            <p>A sacred space for evergreen Konkani devotional melodies and temple rituals.</p>
-            <div class="btn-group">
-                <a href="https://www.youtube.com/@konkanibhajans" target="_blank" class="btn btn-primary">Join Community</a>
-                <a href="mailto:konkanibhajansofficial@gmail.com" class="btn btn-outline">Submit Bhajan</a>
-            </div>
+        <h2>Konkani Bhajans</h2>
+        <p>Preserving our sacred traditions through melody</p>
+        <div class="btn-box">
+            <a href="https://www.youtube.com/@konkanibhajans" class="btn btn-red">Subscribe</a>
+            <a href="mailto:konkanibhajansofficial@gmail.com" class="btn btn-gold">Submit Entry</a>
         </div>
     </header>
 
-    <section class="stats">
-        <div class="stat-item"><h3>924</h3><p>Subscribers</p></div>
-        <div class="stat-item"><h3>11+</h3><p>Sacred Videos</p></div>
-        <div class="stat-item"><h3>Free</h3><p>Global Promotion</p></div>
-    </section>
-
-    <main class="video-container" id="videos">
-        <div class="section-header">
-            <h2>Recent Offerings</h2>
-            <div class="divider"></div>
-        </div>
-
+    <main class="container">
+        <h3 class="section-title">Devotional Collection</h3>
         <div class="video-grid">
             <div class="video-card">
-                <div class="video-thumb">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE"></iframe>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
                 </div>
                 <div class="video-info">
-                    <h4>Traditional Konkani Bhajan</h4>
+                    <h4>Traditional Bhajan</h4>
                 </div>
             </div>
-            <div class="video-card">
-                <div class="video-thumb">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE"></iframe>
-                </div>
-                <div class="video-info">
-                    <h4>Devotional Temple Video</h4>
-                </div>
             </div>
-        </div>
     </main>
 
     <footer>
-        <div class="footer-logo">Konkani Bhajans</div>
-        <p style="margin-bottom: 20px; opacity: 0.6;">Dedicated to preserving our Konkani devotional heritage.</p>
-        <a href="mailto:konkanibhajansofficial@gmail.com" class="footer-email">konkanibhajansofficial@gmail.com</a>
-        <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.4;">&copy; 2026 Krishna Pai. All Rights Reserved.</p>
+        <p>Join our mission to keep Konkani culture alive.</p>
+        <br>
+        <a href="mailto:konkanibhajansofficial@gmail.com" class="footer-mail">konkanibhajansofficial@gmail.com</a>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #999;">&copy; 2026 Krishna Pai. Built with Devotion.</p>
     </footer>
 
 </body>
